@@ -33,7 +33,7 @@ function App() {
     if (!cityData) return null;
     const data = cityData[city];
     const isLoading = !data;
-    return (
+    return (data &&
       <div key={city}>
         <h1>{data.name}</h1>
         {isLoading ? (
