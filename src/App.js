@@ -1,49 +1,54 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import CityCard from "./CityCard";
-import cloudySkies from "./images/cloudy.svg";
-import axios from "axios";
+ import CityCard from "./CityCard";
+ import cloudySkies from "./images/cloudy.svg";
 
 function App() {
-  const [weatherData, setWeatherData] = useState({});
-  async function fetchData(city) {
-    let url = `
-https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=us&key=TKSNR9R5STMBCQ8HM2Z9GPZPB&contentType=json`;
-    const RESPONSE = await axios.get(url);
-    setWeatherData(RESPONSE.data);
-  }
-  const cities = ["hamburg"];
+  const [cityData, setCityData] = useState({});
+  const cities = ["Hamburg"];
 
-  function renderCityCard() {
-    return cities.map(async (city) => {
-      const DATA = await fetchData(city);
-      console.log(DATA);
-      return (
-        <CityCard
-          name={DATA.resolvedAddress}
-          temp={DATA.currentConditions.temp}
-          imageSrc={cloudySkies}
-        />
+  const fetchData = async (city) => {
+    const response = await fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=c6f9c5276d42f0a32ce26ae3d1334051`
+    );
+    const data = await response.json();
+    return data;
+  };
+
+  useEffect(() => {
+    const fetchDataForAllCities = async () => {
+      const responses = await Promise.all(
+        cities.map((city) => fetchData(city))
       );
-    });
-  }
+      const data = cities.reduce((acc, city, index) => {
+        acc[city] = responses[index];
+        return acc;
+      }, {});
+      setCityData(data);
+    };
+    fetchDataForAllCities();
+  }, []);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        {/* citycard */}
-        {renderCityCard()}
-      </header>
-      <nav className="Navigation">
-        <ul>
-          <li>Home</li>
-          <li>Search</li>
-          <li>Calendar</li>
-          <li>Custom</li>
-        </ul>
-      </nav>
-    </div>
-  );
+  return cities.map((city) => {
+    if (!cityData) return null;
+    const data = cityData[city];
+    const isLoading = !data;
+
+    return (
+      <div key={city}>
+        <h1>{city}</h1>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <CityCard
+            name={data.sys.name}
+            temp={data.main.temp}
+            imageSrc={cloudySkies}
+          />
+        )}
+      </div>
+    );
+  });
 }
 
 export default App;
