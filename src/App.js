@@ -33,19 +33,20 @@ function App() {
     if (!cityData) return null;
     const data = cityData[city];
     const isLoading = !data;
-    return (!!data &&
-      <div key={city}>
-        <h1>{data.name}</h1>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <CityCard
-            name={data.name}
-            temp={data.main.temp}
-            imageSrc={cloudySkies}
-          />
-        )}
-      </div>
+    return (
+      !!data && (
+        <div key={city}>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <CityCard
+              name={data.name}
+              temp={data.main.temp}
+              imageSrc={cloudySkies}
+            />
+          )}
+        </div>
+      )
     );
   });
 }

@@ -6,6 +6,7 @@
     padding: 10px;
     border-radius: 8px;
     min-width: 295px;
+    margin-bottom: 20px;
 }
 
 .CityCard:not(:last-child) {
