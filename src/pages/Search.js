@@ -6,7 +6,16 @@ const Search = () => {
   const cities = ["Hamburg", "New+York", "Paris"];
   return (
     <div className="Search">
-      <input type="text" placeholder="Search.."></input>
+      <input
+        type="text"
+        placeholder="Search.."
+        onChange={(ev) => {
+          const filteredCities = cities.filter((city) =>
+            city.toLowerCase().includes(ev.target.value)
+          );
+          console.log("filteredCities", filteredCities);
+        }}
+      ></input>
       {/* // ok this is great, now imagine that when you type in the search, you want the array to show the cities that match the search as you type them, 
       // so if you type "H" you should see "Hamburg" and if you type "Ha" you should see "Hamburg" and so on,
       // how would you do that?
