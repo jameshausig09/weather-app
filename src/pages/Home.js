@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import CityCard from "./CityCard";
-import cloudySkies from "./images/cloudy.svg";
+import CityCard from "../CityCard";
+import cloudySkies from "../images/cloudy.svg";
 
-function App() {
+function Home() {
   const [cityData, setCityData] = useState({});
   const cities = ["Hamburg", "New+York", "Paris"];
 
@@ -51,4 +50,4 @@ function App() {
   });
 }
 
-export default App;
+export default Home;

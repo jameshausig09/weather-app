@@ -1,0 +1,12 @@
+
+
+ .Navigation {
+  position:absolute;
+  bottom: 0;
+}
+.Navigation ul {
+  background-color: white;
+  display:flex;
+  list-style-type: none;
+  gap: 10px;
+}
