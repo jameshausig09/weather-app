@@ -1,13 +1,13 @@
-input[type=text] {
+.input {
     padding: 6px;
     border: 1px solid;
     font-size: 17px;
     border-radius: 6px;
     margin-bottom: 20px;
 }
-Search {
+.Search {
     display:flex;
-    flexDirection: column;
+    flex-direction: column;
     justify-content: center;
     
 

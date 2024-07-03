@@ -1,3 +1,4 @@
+import "./Layout.css";
 import { Outlet, Link } from "react-router-dom";
 
 const Layout = () => {
@@ -5,7 +6,7 @@ const Layout = () => {
     <>
       <Outlet />
       <nav className="Navigation">
-        <ol>
+        <ul>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -15,7 +16,7 @@ const Layout = () => {
           <li>
             <Link to="/overview">overview</Link>
           </li>
-        </ol>
+        </ul>
       </nav>
     </>
   );

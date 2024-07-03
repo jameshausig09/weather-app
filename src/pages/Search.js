@@ -22,6 +22,7 @@ const Search = () => {
         placeholder="Search.."
         onChange={(ev) => handleOnChange(ev)}
       ></input>
+      {!filteredCities.length && <p>nothing found!</p>}
       {filteredCities.map((city) => {
         const formattedCityStr = formattedCity(city);
         return (

@@ -3,14 +3,14 @@
  .Navigation {
   position:absolute;
   bottom: 0;
-      left: 50%;
-        transform: translateX(-50%);
+  left: 50%;
+  transform: translateX(-50%);
 }
 .Navigation ul {
   background-color: white;
   display:flex;
   list-style-type: none;
   gap: 10px;
-      padding-left: 0;
-        justify-content: center;
+  padding-left: 0;
+  justify-content: center;
 }
