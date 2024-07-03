@@ -7,10 +7,14 @@
 - HINT: Are all the guards correct?
 3. There is a bug in your index.js, can you find it?
 - HINT: Are the paths correct? -->
-
+<!-- 
 4. There's a bug in your index.js - can you find it?
 - HINT: Are you imports correct?
 5. In your CityCard.js, can you fix the bugs there?
 - HINT: Are your variables being used correctly?
 6. There's a bug in your Search.js, hmm what is broken?
-- HINT: Is handleOnChange running properly?
+- HINT: Is handleOnChange running properly? -->
+
+7. There is a bug in your Search.css, what went wrong?
+8. Your Layout.js looks off, I wonder why?
+9. Home.js looks odd to me, is everything working there?

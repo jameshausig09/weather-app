@@ -5,9 +5,9 @@ input[type=text] {
     border-radius: 6px;
     margin-bottom: 20px;
 }
-.Search {
+Search {
     display:flex;
-    flex-direction: column;
+    flexDirection: column;
     justify-content: center;
     
 
