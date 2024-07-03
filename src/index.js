@@ -11,10 +11,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/overview" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/overview" element={<Overview />} />
+          <Route path="/" element={<Overview />} />
         </Route>
       </Routes>
     </BrowserRouter>

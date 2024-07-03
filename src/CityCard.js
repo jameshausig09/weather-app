@@ -10,10 +10,10 @@ function CityCard({ name, temp, imageSrc }) {
       }}
     >
       <div className="CityCard-content">
-        {!!name && <p className="CityCard-name">{name}</p>}
+        {!name && <p className="CityCard-name">{name}</p>}
         {!!temp && <p className="CityCard-temp">{Math.round(temp)} °</p>}
       </div>
-      {!!imageSrc && (
+      {!!imageSrc && !!name && (
         <div className="CityCard-image">
           <img src={imageSrc} alt="weather condition" />
         </div>
