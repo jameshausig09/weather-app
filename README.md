@@ -1,20 +1,33 @@
-## My weather app - hey whats up
+## My weather app
 
- <!-- Task for 3. July -->
-<!-- 1. I have added a bug in your Overview.js, somewhere in there the styling and the syntax is not meaningful enough. Can you figure out how to correctly style and name your tags so that they accurately reflect better what you are seeing?
-- HINT: Do the tags correctly show what you intend to see? Do the classes accurately reflect the right styles?
-2. I have added a bug in your CityCard.js - can you find it?
-- HINT: Are all the guards correct?
-3. There is a bug in your index.js, can you find it?
-- HINT: Are the paths correct? -->
-<!-- 
-4. There's a bug in your index.js - can you find it?
-- HINT: Are you imports correct?
-5. In your CityCard.js, can you fix the bugs there?
-- HINT: Are your variables being used correctly?
-6. There's a bug in your Search.js, hmm what is broken?
-- HINT: Is handleOnChange running properly? -->
+ <!-- Task for 4. July -->
+ Hey man, today I would like you to refactor your code, which means, to have the same functionality but with less lines. This means that code is cleaner and runs slightly faster with less lines, it's still doing the same thing but when you refactor code you are making it smaller.
 
-7. There is a bug in your Search.css, what went wrong?
-8. Your Layout.js looks off, I wonder why?
-9. Home.js looks odd to me, is everything working there?
+ For example in your code:
+
+```
+{filteredCities.map((city) => {
+    const formattedCityStr = formattedCity(city);
+    return (
+        <CityCard name={formattedCityStr} temp={0} imageSrc={cloudySkies} />
+    );
+})}
+```
+
+we can refactor this down smaller and still do the same thing:
+
+```
+{filteredCities.map((city) => (
+    <CityCard name={formattedCity(city)} temp={0} imageSrc={cloudySkies} />
+))}
+```
+
+I have done two things here. I have removed the variabble where we set the formattedCity and passed it directly into the prop of the CityCard name, secondly I am directly returning the CityCard instead of using the curly brackets and returning it. These little changes can improve speed and overall performance of code when it is executed.
+
+Have a look around your project and see if there are places where you can refactor your code.
+
+Some reading material: https://medium.com/@london.lingo.01/the-art-of-code-refactoring-in-javascript-techniques-for-improving-code-quality-edbfd119584a
+
+---
+
+When you are done with that and want to try something new, let's have a look at how a CMS (Content Management System) can be used in your project - they are used for passing in information like words, content and images which a client or customer would want on their website if you are making a project for them.
