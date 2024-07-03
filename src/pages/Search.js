@@ -7,10 +7,10 @@ const Search = () => {
   const cities = ["Hamburg", "New+York", "Paris"];
   const [filteredCities, setFilteredCities] = useState(cities);
   const handleOnChange = (ev) => {
-    let filtered = cities.map((city) =>
-      city.toLowerCase().includes(ev)
+    let filtered = cities.filter((city) =>
+      city.toLowerCase().includes(ev.target.value)
     );
-    setFilteredCities(cities);
+    setFilteredCities(filtered);
   };
   const formattedCity = (cityStr) => {
     return cityStr.replace("+", " ");
