@@ -1,16 +1,16 @@
 import "./CityCard.css";
 
-function CityCard({ name, temp, imageSrc }) {
+function CityCard({ name, temp }) {
   return (
     <div
       className="CityCard"
       style={{
         backgroundColor:
-          temp >= 30 ? "#ffaa48" : temp >= 16 ? "#87cefa" : "#d3d3d3",
+          temp >= 30 ? "#ffaa48" : name >= 16 ? "#87cefa" : "#d3d3d3",
       }}
     >
       <div className="CityCard-content">
-        {!name && <p className="CityCard-name">{name}</p>}
+        {!name && <p className="CityCard-name">{temp}</p>}
         {!!temp && <p className="CityCard-temp">{Math.round(temp)} °</p>}
       </div>
       {!!imageSrc && !!name && (
