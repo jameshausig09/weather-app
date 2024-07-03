@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./Layout";
 import Search from "./pages/Search";
-import Calendar from "./pages/Calendar";
+import Overview from "./pages/Overview";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/overview" element={<Overview />} />
         </Route>
       </Routes>
     </BrowserRouter>

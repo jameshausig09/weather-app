@@ -6,7 +6,7 @@ function CityCard({ name, temp, imageSrc }) {
       className="CityCard"
       style={{
         backgroundColor:
-          temp >= 30 ? "#ffaa48" : temp >= 15 ? "#87cefa" : "#d3d3d3",
+          temp >= 30 ? "#ffaa48" : temp >= 16 ? "#87cefa" : "#d3d3d3",
       }}
     >
       <div className="CityCard-content">

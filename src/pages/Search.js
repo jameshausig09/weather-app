@@ -1,25 +1,33 @@
+import { useState } from "react";
 import CityCard from "../CityCard";
 import cloudySkies from "../images/cloudy.svg";
 import "./Search.css";
 
 const Search = () => {
   const cities = ["Hamburg", "New+York", "Paris"];
+  const [filteredCities, setFilteredCities] = useState(cities);
+  const handleOnChange = (ev) => {
+    let filtered = cities.filter((city) =>
+      city.toLowerCase().includes(ev.target.value)
+    );
+    setFilteredCities(filtered);
+  };
+  const formattedCity = (cityStr) => {
+    return cityStr.replace("+", " ");
+  };
   return (
     <div className="Search">
       <input
         type="text"
         placeholder="Search.."
-        onChange={(ev) => {
-          const filteredCities = cities.filter((city) =>
-            city.toLowerCase().includes(ev.target.value)
-          );
-          console.log("filteredCities", filteredCities);
-          // this is almost there! How about you move this logic up to a function above the return line, and then use the new array in line 20 instead of "cities"?
-        }}
+        onChange={(ev) => handleOnChange(ev)}
       ></input>
-      {cities.map((city) => (
-        <CityCard name={city} temp={0} imageSrc={cloudySkies} />
-      ))}
+      {filteredCities.map((city) => {
+        const formattedCityStr = formattedCity(city);
+        return (
+          <CityCard name={formattedCityStr} temp={0} imageSrc={cloudySkies} />
+        );
+      })}
     </div>
   );
 };

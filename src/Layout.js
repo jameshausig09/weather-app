@@ -14,7 +14,7 @@ const Layout = () => {
             <Link to="/search">search</Link>
           </li>
           <li>
-            <Link to="/calendar">calendar</Link>
+            <Link to="/overview">overview</Link>
           </li>
         </ul>
       </nav>
