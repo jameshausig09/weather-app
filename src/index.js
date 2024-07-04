@@ -20,7 +20,7 @@ storyblokInit({
 
 const App = () => {
   const [cityData, setCityData] = useState({});
-  const [cities, setCities] = useState([]); // Step 1: Initialize cities as state
+  const [cities, setCities] = useState([]);
   const storyblokContent = GetStoryBlokContent();
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const App = () => {
       }
     }
   }, [storyblokContent, cities]); 
-  
+
   useEffect(() => {
     const fetchDataForAllCities = async () => {
       const responses = await Promise.all(
@@ -54,7 +54,7 @@ const App = () => {
     if (cities.length > 0) {
       fetchDataForAllCities();
     }
-  }, [cities, cityData]); // Depend on cities to re-run this effect
+  }, [cities, cityData]);
 
   if (cities.length === 0) return <>Nothing.</>; // Show "Nothing" if there are no cities
   return (
