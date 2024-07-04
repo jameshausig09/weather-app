@@ -20,28 +20,43 @@ storyblokInit({
 
 const App = () => {
   const [cityData, setCityData] = useState({});
+  const [cities, setCities] = useState([]); // Step 1: Initialize cities as state
   const storyblokContent = GetStoryBlokContent();
-  let foundCities =
-    storyblokContent &&
-    storyblokContent.props?.blok?.body?.map((item) => {
-      return item.headline;
-    });
-  console.log("foundCities", foundCities);
-  const cities = ["Los+Angeles"];
+
+  useEffect(() => {
+    let foundCities =
+      storyblokContent &&
+      storyblokContent.props?.blok?.body?.map((item) => item.headline);
+  
+    if (foundCities && foundCities.length > 0) {
+      // Only update if there's a change
+      if (JSON.stringify(cities) !== JSON.stringify(foundCities)) {
+        setCities(foundCities);
+      }
+    }
+  }, [storyblokContent, cities]); 
+  
   useEffect(() => {
     const fetchDataForAllCities = async () => {
       const responses = await Promise.all(
-        cities?.map((city) => fetchData(city))
+        cities.map((city) => fetchData(city.replace(/\s+/g, '+')))
       );
-      const data = cities?.reduce((acc, city, index) => {
+      const newData = cities.reduce((acc, city, index) => {
         acc[city] = responses[index];
         return acc;
       }, {});
-      setCityData(data);
+  
+      // Only update if there's a change
+      if (JSON.stringify(cityData) !== JSON.stringify(newData)) {
+        setCityData(newData);
+      }
     };
-    fetchDataForAllCities();
-  }, []);
-  if (!cities) return <>Nothing.</>;
+    if (cities.length > 0) {
+      fetchDataForAllCities();
+    }
+  }, [cities, cityData]); // Depend on cities to re-run this effect
+
+  if (cities.length === 0) return <>Nothing.</>; // Show "Nothing" if there are no cities
   return (
     <BrowserRouter>
       <Routes>
