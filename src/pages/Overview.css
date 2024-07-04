@@ -5,8 +5,8 @@
     flex-direction: column;
 }
 .overview-item {
-        padding: 0 4em;
-        text-align: center;
+    padding: 0 4em;
+    text-align: center;
 }
 .overview-box {
         min-height: 400px;
@@ -15,6 +15,12 @@
         text-align: center;
         flex-direction: column;
         border-radius: 8px;
+}
+.overview-box-item {
+background: rgba(0, 0, 255, 0.5);
+    border-radius: 12px;
+    width: 80%;
+    margin-bottom: 30px;
 }
 .overview-box-text {
     text-align: center;

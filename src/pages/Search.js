@@ -3,8 +3,7 @@ import CityCard from "../CityCard";
 import cloudySkies from "../images/cloudy.svg";
 import "./Search.css";
 
-const Search = () => {
-  const cities = ["Hamburg", "New+York", "Paris"];
+const Search = ({ cities }) => {
   const [filteredCities, setFilteredCities] = useState(cities);
   const handleOnChange = (ev) => {
     let filtered = cities.filter((city) =>
@@ -12,9 +11,7 @@ const Search = () => {
     );
     setFilteredCities(filtered);
   };
-  const formattedCity = (cityStr) => {
-    return cityStr.replace("+", " ");
-  };
+  const formattedCity = (cityStr) => cityStr.replace("+", " ");
   return (
     <div className="Search">
       <input
@@ -23,12 +20,9 @@ const Search = () => {
         onChange={(ev) => handleOnChange(ev)}
       ></input>
       {!filteredCities.length && <p>nothing found!</p>}
-      {filteredCities.map((city) => {
-        const formattedCityStr = formattedCity(city);
-        return (
-          <CityCard name={formattedCityStr} temp={0} imageSrc={cloudySkies} />
-        );
-      })}
+      {filteredCities.map((city) => (
+        <CityCard name={formattedCity(city)} temp={0} imageSrc={cloudySkies} />
+      ))}
     </div>
   );
 };
