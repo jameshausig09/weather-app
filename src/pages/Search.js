@@ -11,7 +11,7 @@ const Search = ({ cities }) => {
     );
     setFilteredCities(filtered);
   };
-  const formattedCity = (cityStr) => cityStr.replace("+", " ");
+  const formattedCity = (cityHeadline) => cityHeadline.replace("+", " ");
   return (
     <div className="Search">
       <input
