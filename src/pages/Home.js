@@ -7,7 +7,7 @@ const Home = ({ cities, cityData }) =>
     if (!cityData) return null;
     const data = cityData[city];
     const isLoading = !data;
-    const weatherType = data.weather[0].main === 'Rain' ? rainy : cloudy;
+    const weatherType = data?.weather[0].main === 'Rain' ? rainy : cloudy;
     return (
       !!data && (
         <div key={city}>
