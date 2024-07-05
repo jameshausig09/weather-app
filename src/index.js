@@ -27,9 +27,8 @@ const App = () => {
     let foundCities =
       storyblokContent &&
       storyblokContent.props?.blok?.body?.map((item) => {
-        console.log(item);
-        return item.headline;
-      });
+        return {headline: item.headline, description: item.description};
+        });
 
     if (foundCities && foundCities.length > 0) {
       // Only update if there's a change
@@ -42,7 +41,7 @@ const App = () => {
   useEffect(() => {
     const fetchDataForAllCities = async () => {
       const responses = await Promise.all(
-        cities.map((city) => fetchData(city.replace(/\s+/g, "+")))
+        cities.map((city) => fetchData(city.headline.replace(/\s+/g, "+")))
       );
       const newData = cities.reduce((acc, city, index) => {
         acc[city] = responses[index];

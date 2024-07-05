@@ -8,6 +8,7 @@ const Home = ({ cities, cityData }) =>
     const data = cityData[city];
     const isLoading = !data;
     const weatherType = data?.weather[0].main === 'Rain' ? rainy : cloudy;
+    // please extend this if you like with a switch statement (https://www.w3schools.com/js/js_switch.asp)
     return (
       !!data && (
         <div key={city}>
