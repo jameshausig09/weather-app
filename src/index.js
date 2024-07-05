@@ -7,46 +7,21 @@ import Search from "./pages/Search.js";
 import Overview from "./pages/Overview.js";
 import Layout from "./Layout.js";
 import fetchData from "./utils/fetchData.js";
-import { apiPlugin, storyblokInit } from "@storyblok/react";
-import GetStoryBlokContent from "./utils/GetStoryBlokContent.js";
-import Teaser from "./components/Teaser.js";
-import Page from "./components/Page.js";
 
-storyblokInit({
-  accessToken: "3brAcEv7vX2YdusLsBQyOAtt",
-  use: [apiPlugin],
-  components: { teaser: Teaser, page: Page },
-});
 
 const App = () => {
   const [cityData, setCityData] = useState({});
-  const [cities, setCities] = useState([]);
-  const storyblokContent = GetStoryBlokContent();
-
-  useEffect(() => {
-    let foundCities =
-      storyblokContent &&
-      storyblokContent.props?.blok?.body?.map((item) => {
-        return { headline: item.headline, description: item.description };
-      });
-
-    if (foundCities && foundCities.length > 0) {
-      // Only update if there's a change
-      if (JSON.stringify(cities) !== JSON.stringify(foundCities)) {
-        setCities(foundCities);
-      }
-    }
-  }, [storyblokContent, cities]);
+const cities = ["London", "Paris", "Berlin", "New+York", "Tokyo"]
 
   useEffect(() => {
     const fetchDataForAllCities = async () => {
       const responses = await Promise.all(
         cities.map((city) => {
-          return fetchData(city.headline.replace(/\s+/g, "+"));
+          return fetchData(city.replace(/\s+/g, "+"));
         })
       );
       const newData = cities.reduce((acc, city, index) => {
-        acc[city.headline] = responses[index];
+        acc[city] = responses[index];
         return acc;
       }, {});
 

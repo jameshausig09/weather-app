@@ -5,13 +5,13 @@ import rainy from "../images/rainy.svg";
 const Home = ({ cities, cityData }) =>
   cities.map((city) => {
     if (!cityData) return null;
-    const apiData = cityData[city.headline];
+    const apiData = cityData[city];
     const isLoading = !apiData;
     const weatherType = apiData?.weather[0].main === 'Rain' ? rainy : cloudy;
     // please extend this if you like with a switch statement (https://www.w3schools.com/js/js_switch.asp)
     return (
       !!apiData && (
-        <div key={city.headline}>
+        <div key={city}>
           {!!isLoading ? (
             <p>Loading...</p>
           ) : (

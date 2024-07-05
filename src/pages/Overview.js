@@ -5,7 +5,7 @@ const Overview = ({ cities, cityData }) => (
     <h1 className="overview-item">Overview</h1>
     {cities.map((city) => {
       // for each city we want to do something with it
-      const apiData = cityData[city.headline];
+      const apiData = cityData[city];
       if (!apiData) return null;
 
       const sunrise = new Date(apiData.sys.sunrise * 1000).toUTCString();
@@ -14,16 +14,13 @@ const Overview = ({ cities, cityData }) => (
       const sunsetTime = sunset.slice(17, -7);
       return (
         <div className="overview-box-item">
-          {city.headline && (
+          {city && (
             <h2 className="overview-box-text overview-box-text-first-child">
-              {city.headline}
+              {city}
             </h2>
           )}
           <p className="overview-box-text">Sunrise: {sunriseTime}</p>
           <p className="overview-box-text">Sunset: {sunsetTime}</p>
-          {city.description && (
-            <p className="overview-box-text">Description: {city.description}</p>
-          )}
         </div>
       );
     })}
