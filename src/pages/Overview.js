@@ -11,6 +11,7 @@ const Overview = ({ cities, cityData }) => (
       const sunset = new Date(data.sys.sunset * 1000).toUTCString();
       const sunriseTime = sunrise.slice(17, -7);
       const sunsetTime = sunset.slice(17, -7);
+      console.log(data);
       return (
         <div className="overview-box-item">
           <h2 className="overview-box-text overview-box-text-first-child">
@@ -18,6 +19,7 @@ const Overview = ({ cities, cityData }) => (
           </h2>
           <p className="overview-box-text">Sunrise: {sunriseTime}</p>
           <p className="overview-box-text">Sunset: {sunsetTime}</p>
+          <p className="overview-box-text">{data.description}</p>
         </div>
       );
     })}
