@@ -5,7 +5,7 @@ const Overview = ({ cities, cityData }) => (
     <h1 className="overview-item">Overview</h1>
     {cities.map((city) => {
       // for each city we want to do something with it
-      const apiData = cityData[city];
+      const apiData = cityData[city.headline];
       if (!apiData) return null;
 
       const sunrise = new Date(apiData.sys.sunrise * 1000).toUTCString();

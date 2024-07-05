@@ -7,7 +7,7 @@ const Search = ({ cities }) => {
   const [filteredCities, setFilteredCities] = useState(cities);
   const handleOnChange = (ev) => {
     let filtered = cities.filter((city) =>
-      city.toLowerCase().includes(ev.target.value)
+      city.headline.toLowerCase().includes(ev.target.value)
     );
     setFilteredCities(filtered);
   };
@@ -21,7 +21,7 @@ const Search = ({ cities }) => {
       ></input>
       {!filteredCities.length && <p>nothing found!</p>}
       {filteredCities.map((city) => (
-        <CityCard name={formattedCity(city)} temp={0} imageSrc={cloudySkies} />
+        <CityCard name={formattedCity(city.headline)} temp={0} imageSrc={cloudySkies} />
       ))}
     </div>
   );
